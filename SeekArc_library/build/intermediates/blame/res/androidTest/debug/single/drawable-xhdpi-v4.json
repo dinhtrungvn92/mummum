@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "E:\\AndroidStudioProjects\\mummum\\mummum\\SeekArc_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_pressed_holo.png",
+        "source": "E:\\AndroidStudioProjects\\mummum\\mummum\\SeekArc_library\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_pressed_holo.png"
+    },
+    {
+        "merged": "E:\\AndroidStudioProjects\\mummum\\mummum\\SeekArc_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_normal_holo.png",
+        "source": "E:\\AndroidStudioProjects\\mummum\\mummum\\SeekArc_library\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_normal_holo.png"
+    },
+    {
+        "merged": "E:\\AndroidStudioProjects\\mummum\\mummum\\SeekArc_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ic_launcher.png",
+        "source": "E:\\AndroidStudioProjects\\mummum\\mummum\\SeekArc_library\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\ic_launcher.png"
+    },
+    {
+        "merged": "E:\\AndroidStudioProjects\\mummum\\mummum\\SeekArc_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_disabled_holo.png",
+        "source": "E:\\AndroidStudioProjects\\mummum\\mummum\\SeekArc_library\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_disabled_holo.png"
+    },
+    {
+        "merged": "E:\\AndroidStudioProjects\\mummum\\mummum\\SeekArc_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\scrubber_control_focused_holo.png",
+        "source": "E:\\AndroidStudioProjects\\mummum\\mummum\\SeekArc_library\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\scrubber_control_focused_holo.png"
+    }
+]

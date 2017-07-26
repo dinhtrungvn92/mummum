@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/music_offline">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_music_offline_album"
+                    android:icon="@drawable/ic_album_black_24dp"
+                    android:title="@string/album" />
+                <item
+                    android:id="@+id/nav_music_offline_track"
+                    android:icon="@drawable/ic_queue_music_black_24dp"
+                    android:title="@string/track" />
+                <item
+                    android:id="@+id/nav_music_offline_playlist"
+                    android:icon="@drawable/ic_playlist_play_black_24dp"
+                    android:title="@string/playlist_offline" />
+                <item
+                    android:id="@+id/nav_music_offline_folder"
+                    android:icon="@drawable/ic_create_new_folder_white_24dp"
+                    android:title="@string/folder" />
+                <item
+                    android:id="@+id/nav_music_offline_downloaded"
+                    android:icon="@drawable/ic_file_download_white_36dp"
+                    android:title="@string/downloaded" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="@string/music_online">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_music_online_playlist"
+                    android:icon="@drawable/ic_playlist_play_black_24dp"
+                    android:title="@string/playlist_online" />
+                <item
+                    android:id="@+id/nav_music_online_v_pop"
+                    android:icon="@drawable/ic_library_music_black_24dp"
+                    android:title="@string/vietnamese_music" />
+                <item
+                    android:id="@+id/nav_music_online_us_uk"
+                    android:icon="@drawable/ic_library_music_black_24dp"
+                    android:title="@string/us_uk_music" />
+                <item
+                    android:id="@+id/nav_music_online_c_pop"
+                    android:icon="@drawable/ic_library_music_black_24dp"
+                    android:title="@string/chinese_music" />
+                <item
+                    android:id="@+id/nav_music_online_k_pop"
+                    android:icon="@drawable/ic_library_music_black_24dp"
+                    android:title="@string/korean_music" />
+                <item
+                    android:id="@+id/nav_music_online_j_pop"
+                    android:icon="@drawable/ic_library_music_black_24dp"
+                    android:title="@string/japanese_music" />
+                <item
+                    android:id="@+id/nav_music_online_other"
+                    android:icon="@drawable/ic_library_music_black_24dp"
+                    android:title="@string/other_music" />
+
+            </group>
+        </menu>
+    </item>
+    <item android:title="@string/about_us">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/Share"
+                    android:icon="@drawable/ic_share_black_36dp"
+                    android:textColor="@android:color/white"
+                    android:title="@string/share" />
+                <item
+                    android:id="@+id/VoteUs"
+                    android:icon="@drawable/ic_grade_black_36dp"
+                    android:textColor="@android:color/white"
+                    android:title="@string/vote_us" />
+                <item
+                    android:id="@+id/aboutUs"
+                    android:icon="@drawable/ic_people_black_36dp"
+                    android:textColor="@android:color/white"
+                    android:title="@string/about_us_small" />
+
+            </group>
+        </menu>
+    </item>
+
+
+</menu>

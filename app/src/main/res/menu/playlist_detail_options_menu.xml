@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/addToPlaylist"
+        android:title="@string/add_to_playlist">
+        @style/MyPopupMenu
+    </item>
+
+    <item
+        android:id="@+id/removeOutOfPlaylist"
+        android:title="@string/remove_out_of_playlist">
+        @style/MyPopupMenu
+    </item>
+</menu>

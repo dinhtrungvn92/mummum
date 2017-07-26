@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/av_banner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        ads:adSize="SMART_BANNER"
+        ads:adUnitId="@string/ad_unit_banner"></com.google.android.gms.ads.AdView>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/playArt"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_above="@+id/csn_download"
+        android:layout_below="@+id/av_banner"
+        android:layout_centerHorizontal="true" />
+
+
+    <RelativeLayout
+        android:id="@+id/csn_download"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/choosequality"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_toLeftOf="@+id/csn_download_btn"
+            android:background="@color/transparent"
+            android:singleLine="true"
+            android:text="128kbps"
+            android:textColor="@color/white"
+            android:textStyle="normal" />
+
+        <Button
+            android:id="@+id/csn_download_btn"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/ic_file_download_white_36dp" />
+
+        <Button
+            android:id="@+id/directory"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="35dp"
+            android:layout_toRightOf="@+id/csn_download_btn"
+            android:background="@drawable/ic_create_new_folder_white_24dp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
