@@ -13,6 +13,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -261,6 +262,18 @@ public class AlbumDetailActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        MusicResource.updateCountView = false;
+        Log.d("UpdateViewCountonDe", MusicResource.updateCountView + "");
+        MusicResource.checkPlaylistUse = false;
+        MusicResource.checkPlaylistOfflineUse = false;
+        MusicResource.isClickFolder = false;
+        MusicResource.checkPlaylistShareUse = false;
     }
 
     @Override

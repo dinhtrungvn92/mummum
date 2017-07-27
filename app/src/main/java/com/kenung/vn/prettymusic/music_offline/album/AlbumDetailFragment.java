@@ -180,6 +180,8 @@ public class AlbumDetailFragment extends Fragment implements View.OnClickListene
                 checkAd = true;
 
         } else if (MusicResource.checkPlaylistShareUse) {
+            MusicResource.updateCountView = true;
+            Log.d("UpdateViewCount", MusicResource.updateCountView + "");
             album_detail_title.setText(MusicResource.playListSelectedTitle);
             album_detail_artist.setText(MusicResource.playlistOnlineShare.get(MusicResource.playlistPosition).getSize() + " " + getString(R.string.track));
             loadBitmap(MusicResource.listSongPlaylistShare.get(0).getUrl(),
@@ -397,15 +399,12 @@ public class AlbumDetailFragment extends Fragment implements View.OnClickListene
         }
     }
 
+
     @Override
+
     public void onDestroy() {
         super.onDestroy();
-        MusicResource.checkPlaylistUse = false;
-        MusicResource.checkPlaylistOfflineUse = false;
-        MusicResource.isClickFolder = false;
-        MusicResource.checkPlaylistShareUse = false;
-        Runtime.getRuntime().freeMemory();
-        Runtime.getRuntime().gc();
+
 //        getActivity().unregisterReceiver(receiverNotiPlay);
 //        getActivity().unregisterReceiver(receiverNotiNext);
 //        getActivity().unregisterReceiver(OnclickSongItemAlbumDetailReceiver);

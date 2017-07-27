@@ -109,15 +109,9 @@ public class ServerRequest {
         protected String doInBackground(String... params) {
             JSONParser jsonParser = new JSONParser();
             List<NameValuePair> param = new ArrayList<>();
+            Log.d("UpdateViewCount", playlist_id +"");
             param.add(new BasicNameValuePair(Define.P_playlist_id, playlist_id));
             JSONObject jsonObject = jsonParser.makeHttpRequest(Define.P_UpdateVIewCount, Define.P_method_post, param);
-            if (jsonObject != null)
-                try {
-                    success = jsonObject.getInt(Define.P_TAG_SUCCESS);
-                    message = jsonObject.getString(Define.P_TAG_MESSAGE);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
             return null;
         }
 

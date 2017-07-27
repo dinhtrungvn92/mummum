@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -93,6 +94,11 @@ public class SharePlaylistFragment extends Fragment {
             MusicResource.playAtSearchAlbum = false;
             MusicResource.songListOnlinePlay = MusicResource.listSongPlaylistShare;
             getActivity().sendBroadcast(new Intent("OnItemOnlineClick"));
+            Log.d("UpdateViewCount", MusicResource.updateCountView + "");
+            if (MusicResource.updateCountView) {
+                new ServerRequest.UpdateViewCount(MusicResource.playlistOnlineShare.get(MusicResource.playlistPosition).getPlaylist_id(), context).execute();
+                MusicResource.updateCountView = false;
+            }
         }
     };
 
