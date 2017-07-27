@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,12 +15,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.ProgressBar;
+import android.widget.ToggleButton;
 
 import com.kenung.vn.prettymusic.AlbumDetailActivity;
 import com.kenung.vn.prettymusic.MusicResource;
 import com.kenung.vn.prettymusic.R;
 import com.kenung.vn.prettymusic.ServerRequest;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * Created by Administrator on 16/06/2017.
@@ -69,6 +77,18 @@ public class SharePlaylistFragment extends Fragment {
     BroadcastReceiver GetAllPlayListDoneReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+            MusicResource.playlistOnlineShareSorttByViewCount = new ArrayList<>(MusicResource.playlistOnlineShare);
+            MusicResource.playlistOnlineShareSorttByDate = new ArrayList<>(MusicResource.playlistOnlineShare);
+            Collections.sort(MusicResource.playlistOnlineShareSorttByViewCount, new Comparator<PlaylistOnlineModel>() {
+                @Override
+                public int compare(PlaylistOnlineModel o1, PlaylistOnlineModel o2) {
+                    return o1.getView_count() > o2.getView_count() ? -1 : 1;
+                }
+            });
+            if (!MusicResource.toogleSortByViewCount)
+                MusicResource.playlistOnlineShare = new ArrayList<>(MusicResource.playlistOnlineShareSorttByDate);
+            else
+                MusicResource.playlistOnlineShare = new ArrayList<>(MusicResource.playlistOnlineShareSorttByViewCount);
             adapter = new PlaylistAdapter(getContext(), MusicResource.playlistOnlineShare, "share_playlist");
             playlist_rv.setAdapter(adapter);
             refreshLayout.setRefreshing(false);
@@ -122,10 +142,29 @@ public class SharePlaylistFragment extends Fragment {
 
     }
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.share_playlist_fragment, container, false);
+        final ToggleButton toggle = (ToggleButton) view.findViewById(R.id.toggleButton2);
+        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    MusicResource.toogleSortByViewCount = true;
+                } else {
+                    MusicResource.toogleSortByViewCount = false;
+                }
+                if (!MusicResource.toogleSortByViewCount)
+                    MusicResource.playlistOnlineShare = new ArrayList<>(MusicResource.playlistOnlineShareSorttByDate);
+                else
+                    MusicResource.playlistOnlineShare = new ArrayList<>(MusicResource.playlistOnlineShareSorttByViewCount);
+                adapter = new PlaylistAdapter(getContext(), MusicResource.playlistOnlineShare, "share_playlist");
+                playlist_rv.setAdapter(adapter);
+                refreshLayout.setRefreshing(false);
+                MusicResource.isRefreshingSharePlaylist = false;
+            }
+        });
         new ServerRequest.GetAllPlayList(getActivity()).execute();
         progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
         playlist_rv = (RecyclerView) view.findViewById(R.id.playlist_rv);

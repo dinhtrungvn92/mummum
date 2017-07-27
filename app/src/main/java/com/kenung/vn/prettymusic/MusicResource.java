@@ -36,11 +36,14 @@ import static android.content.Context.NOTIFICATION_SERVICE;
  */
 
 public class MusicResource {
+    public  static boolean toogleSortByViewCount = false;
     public static boolean updateCountView = true;
     public static boolean isRefreshingSharePlaylist = false;
     public static boolean checkPlaylistShareUse = false;
     public static ArrayList<Track> listSongPlaylistShare = new ArrayList<>();
     public static ArrayList<PlaylistOnlineModel> playlistOnlineShare = new ArrayList<>();
+    public static ArrayList<PlaylistOnlineModel> playlistOnlineShareSorttByViewCount = new ArrayList<>();
+    public static ArrayList<PlaylistOnlineModel> playlistOnlineShareSorttByDate = new ArrayList<>();
     public static ArrayList<Song> folderSelected = new ArrayList<>();
     public static int folderPositon;
     public static boolean isClickFolder = false;
