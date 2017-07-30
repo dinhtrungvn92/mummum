@@ -750,7 +750,7 @@ public class PlayArtFragment extends Fragment {
 
                 download_detail =
                         hashMap.get(MusicResource.MODE).get(MusicResource.songPosition).getDownload_detail();
-
+                Log.d("TestDownload", download_detail + "");
                 if (download_detail != null) {
                     listAlert = new ArrayList<>();
                     listDownloadUrl = new ArrayList<>();

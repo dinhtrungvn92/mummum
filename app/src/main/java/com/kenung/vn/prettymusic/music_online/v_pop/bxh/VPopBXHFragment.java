@@ -475,7 +475,7 @@ public class VPopBXHFragment extends Fragment {
                             MusicResource.makeHashmapQuality(MusicResource.VPop_BXH, MusicResource.songPosition, matcher.group(1));
                             try {
                                 Log.d("VPop_BXH", MusicResource.getQualityfromDefault(MusicResource.qualityLevel, MusicResource.VPop_BXH.get(MusicResource.songPosition)));
-                                Player.player.setDataSource( MusicResource.getQualityfromDefault(MusicResource.qualityLevel, MusicResource.VPop_BXH.get(MusicResource.songPosition)));
+                                Player.player.setDataSource(MusicResource.getQualityfromDefault(MusicResource.qualityLevel, MusicResource.VPop_BXH.get(MusicResource.songPosition)));
                             } catch (IllegalArgumentException error) {
                                 Log.e(MusicResource.LOG_TAG, "You might not set the URI correctly!");
                             } catch (SecurityException error) {
@@ -607,7 +607,6 @@ public class VPopBXHFragment extends Fragment {
             subPlaySong.setVisibility(View.VISIBLE);
             MusicResource.subPlaySongVisible = true;
             String download_url = MusicResource.VPop_BXH.get(MusicResource.songPosition).getDownload_url();
-
             if (download_url != null) {
                 new CSN_Download_Detail()
                         .executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, download_url);
@@ -623,7 +622,8 @@ public class VPopBXHFragment extends Fragment {
     private class CSN_Download_Detail extends AsyncTask<String, Void, HashMap> {
 
         private String download_url;
-        private String regex = "href=\"(.+)\" onmouseover.+: (.+) <.+\"color:(.+)\">(.+)</span> (.+)</a>";
+        private String regex = "<a href=\"(.+?)\" .+?: (.+?) <.+?\"color: (.+?)\">(.+?)</span> (.+?)</a><br>";
+        //        private  String regex = "<a href=\"([^\"]+)\"[^>]+>Link Download [0-9]+: ([^<]+) <[^<]+\"color: ([^>]+)\">([^<]++)</span> ([^<]+)</a>";
         private Pattern pattern = Pattern.compile(regex);
         private HashMap<String, String> download_detail = new HashMap();
 
@@ -635,14 +635,17 @@ public class VPopBXHFragment extends Fragment {
             try {
 
                 Document document = Jsoup.connect(download_url).userAgent("Chrome/59.0.3071.115").get();
+                Log.d("TestDownloaddocument", document + "");
                 if (document == null) return null;
-                Element element = document.select("div#downloadlink").first();
+
+                Element element = document.select("div#downloadlink2").first();
+                Log.d("TestDownloadelement", element + "");
                 if (element == null) return null;
                 Matcher matcher = pattern.matcher(element.html());
                 String download_default_url = "";
                 while (matcher.find()) {
 
-
+                    Log.d("TestDownload", matcher.group(1) + "\n");
                     String hm_key = matcher.group(2) + " " + matcher.group(4) + " " + matcher.group(5);
                     String hm_value = matcher.group(1);
                     if (download_detail.containsKey(hm_key)) continue;

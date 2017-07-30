@@ -695,7 +695,7 @@ public class VPopMCSFragment extends Fragment {
     private class CSN_Download_Detail extends AsyncTask<String, Void, HashMap> {
 
         private String download_url;
-        private String regex = "href=\"(.+)\" onmouseover.+: (.+) <.+\"color:(.+)\">(.+)</span> (.+)</a>";
+        private String regex = "<a href=\"(.+?)\" .+?: (.+?) <.+?\"color: (.+?)\">(.+?)</span> (.+?)</a><br>";
         private Pattern pattern = Pattern.compile(regex);
         private HashMap<String, String> download_detail = new HashMap();
 
@@ -708,7 +708,7 @@ public class VPopMCSFragment extends Fragment {
 
                 Document document = Jsoup.connect(download_url).userAgent("Chrome/57.0.2987.133").get();
                 if (document == null) return null;
-                Element element = document.select("div#downloadlink").first();
+                Element element = document.select("div#downloadlink2").first();
                 if (element == null) return null;
                 Matcher matcher = pattern.matcher(element.html());
                 String download_default_url = "";

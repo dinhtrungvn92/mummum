@@ -250,10 +250,10 @@ public class JPopMDLFragment extends Fragment {
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                if(jPopMDLAdapter != null) {
+                if (jPopMDLAdapter != null) {
                     doRefresh();
                     MusicResource.JPop_MDL_PAGE = 2;
-                }else refreshLayout.setRefreshing(false);
+                } else refreshLayout.setRefreshing(false);
             }
         });
 
@@ -702,7 +702,8 @@ public class JPopMDLFragment extends Fragment {
     private class CSN_Download_Detail extends AsyncTask<String, Void, HashMap> {
 
         private String download_url;
-        private String regex = "href=\"(.+)\" onmouseover.+: (.+) <.+\"color:(.+)\">(.+)</span> (.+)</a>";
+        //        private String regex = "href=\"(.+)\" onmouseover.+: (.+) <.+\"color:(.+)\">(.+)</span> (.+)</a>";
+        private String regex = "<a href=\"(.+?)\" .+?: (.+?) <.+?\"color: (.+?)\">(.+?)</span> (.+?)</a><br>";
         private Pattern pattern = Pattern.compile(regex);
         private HashMap<String, String> download_detail = new HashMap();
 
@@ -715,7 +716,7 @@ public class JPopMDLFragment extends Fragment {
 
                 Document document = Jsoup.connect(download_url).userAgent("Chrome/59.0.3071.115").get();
                 if (document == null) return null;
-                Element element = document.select("div#downloadlink").first();
+                Element element = document.select("div#downloadlink2").first();
                 if (element == null) return null;
 //                Log.d("TestDownload", element.html());
                 Matcher matcher = pattern.matcher(element.html());

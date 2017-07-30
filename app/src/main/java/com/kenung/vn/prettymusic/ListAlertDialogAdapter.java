@@ -2,6 +2,7 @@ package com.kenung.vn.prettymusic;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,7 +50,7 @@ public class ListAlertDialogAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LinearLayout layout = (LinearLayout) alertInf.inflate(R.layout.alert, parent, false);
-
+        Log.d("testDownload", listAlert.get(position) +"");
         quality = (TextView) layout.findViewById(R.id.quality);
         bitrate = (TextView) layout.findViewById(R.id.bitrate);
         size = (TextView) layout.findViewById(R.id.size);
